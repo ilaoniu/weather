@@ -136,4 +136,24 @@ class WeatherTest extends TestCase
         // 如果没有抛出异常，就会运行这行，标记当前测试没有成功
         $this->fail('Failed to assert getWeather throw exception with invalid argument.');
     }
+
+    public function testGetLiveWeather()
+    {
+        // 将 getWeather 接口模拟返回固定内容，以测试参数传递是否正确
+        $w = \Mockery::mock(Weather::class, ['mock-key'])->makePartial();
+        $w->expects()->getWeather('深圳', 'base', 'json')->andReturn(['success' => true]);
+
+        // 断言正确传参并返回
+        $this->assertSame(['success' => true], $w->getLiveWeather('深圳'));
+    }
+
+    public function testGetForecastsWeather()
+    {
+        // 将 getWeather 接口模拟返回固定内容，以测试传递参数是否正确
+        $w = \Mockery::mock(Weather::class, ['mock-key'])->makePartial();
+        $w->expects()->getWeather('深圳', 'all', 'json')->andReturn(['success' => true]);
+
+        // 断言正确传参并返回
+        $this->assertSame(['success' => true], $w->getForecastsWeather('深圳'));
+    }
 }
