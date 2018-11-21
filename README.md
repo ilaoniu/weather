@@ -1,6 +1,7 @@
 # Weather
 
 [![Build Status](https://travis-ci.org/ilaoniu/weather.svg?branch=master)](https://travis-ci.org/ilaoniu/weather)
+![StyleCI build status](https://github.styleci.io/repos/158503168/shield) 
 
 基于 [高德开放平台](https://lbs.amap.com/dev/id/newuser) 的 PHP 天气信息组件。
 
