@@ -1,13 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: niu
- * Date: 2018/11/21
- * Time: 11:16
+
+/*
+ * This file is part of the ilaoniu/weather.
+ *
+ * (c) ilaoniu <ilaoniu@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Ilaoniu\Weather;
-
 
 use GuzzleHttp\Client;
 use Ilaoniu\Weather\Exceptions\HttpException;
@@ -16,6 +18,7 @@ use Ilaoniu\Weather\Exceptions\InvalidArgumentException;
 class Weather
 {
     protected $key;
+
     protected $guzzleOptions = [];
 
     public function __construct($key)
@@ -39,11 +42,11 @@ class Weather
 
         // 1. 对 $format 与 $exceptions 参数进行检查，不在范围内的抛出异常。
         if (!in_array(strtolower($format), ['xml', 'json'])) {
-            throw new InvalidArgumentException('Invalid response format: ' . $format);
+            throw new InvalidArgumentException('Invalid response format: '.$format);
         }
 
         if (!in_array(strtolower($type), ['base', 'all'])) {
-            throw new InvalidArgumentException('Invalid type value(base/all): ' . $type);
+            throw new InvalidArgumentException('Invalid type value(base/all): '.$type);
         }
 
         // 2. 封装 query 参数，并对空值进行过滤。
